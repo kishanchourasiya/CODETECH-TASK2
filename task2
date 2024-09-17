@@ -1,50 +1,80 @@
-/*Devlop a java program  to track and manage student grades . The program should allow the user to input grades for diffrent subjects and calculatwe the average grade and display the overall grade along with letter grade */
-
+import java.util.ArrayList;
 import java.util.Scanner;
-class GradeTracker{
-public static void main(String[]args)
-{
-Scanner sc = new Scanner(System.in);
 
-System.out.println("Enter Adbms marks :" );
- double number =sc.nextDouble();
-System.out.println(  "Marks entered : " + number);
+class Student {
+    private String name;
+    private ArrayList<Double> grades;
 
-System.out.println("Enter Java  marks :" );
- double num =sc.nextDouble();
-System.out.println(  "Marks entered : " + num);
+    // Constructor
+    public Student(String name) {
+        this.name = name;
+        grades = new ArrayList<>();
+    }
 
-System.out.println("Enter Coa marks :" );
- double num1 =sc.nextDouble();
-System.out.println(  "Marks entered : " + num1);
+    // Method to add grades
+    public void addGrade(double grade) {
+        grades.add(grade);
+    }
 
-double sum = number+num+ num1 ;
-System.out.println(num1+"+" + num + number + "=" + sum );
+    // Method to calculate the average grade
+    public double calculateAverage() {
+        double total = 0;
+        for (double grade : grades) {
+            total += grade;
+        }
+        return total / grades.size();
+    }
 
-double per =(sum/300) * 100 ;
-System.out.println("The percentage is :" +per);
+    // Method to calculate the letter grade
+    public char getLetterGrade(double average) {
+        if (average >= 90) return 'A';
+        else if (average >= 80) return 'B';
+        else if (average >= 70) return 'C';
+        else if (average >= 60) return 'D';
+        else return 'F';
+    }
 
-if(per>=75)
-{
-System.out.println(" Grade : A");
+    // Method to calculate GPA
+    public double calculateGPA(double average) {
+        if (average >= 90) return 4.0;
+        else if (average >= 80) return 3.0;
+        else if (average >= 70) return 2.0;
+        else if (average >= 60) return 1.0;
+        else return 0.0;
+    }
+
+    // Method to display the student information
+    public void displayInfo() {
+        double average = calculateAverage();
+        System.out.println("Student Name: " + name);
+        System.out.println("Average Grade: " + average);
+        System.out.println("Letter Grade: " + getLetterGrade(average));
+        System.out.println("GPA: " + calculateGPA(average));
+    }
 }
-else if(per>=60)
-{
-System.out.println(" Grade :B");
 
+public class GradeManager {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Input student information
+        System.out.print("Enter student's name: ");
+        String name = scanner.nextLine();
+        Student student = new Student(name);
+
+        // Input grades
+        System.out.print("How many grades do you want to input? ");
+        int numGrades = scanner.nextInt();
+        
+        for (int i = 0; i < numGrades; i++) {
+            System.out.print("Enter grade " + (i + 1) + ": ");
+            double grade = scanner.nextDouble();
+            student.addGrade(grade);
+        }
+
+        // Display student information
+        student.displayInfo();
+        
+        scanner.close();
+    }
 }
-else if(per=35)
-{System.out.println(" Grade :C");
-}
-else 
-{
-System.out.println(" Grade :F ");
-}
-	}
-}
-
-
-
-
-
-
