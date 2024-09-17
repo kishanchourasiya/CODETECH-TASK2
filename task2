@@ -1,0 +1,50 @@
+/*Devlop a java program  to track and manage student grades . The program should allow the user to input grades for diffrent subjects and calculatwe the average grade and display the overall grade along with letter grade */
+
+import java.util.Scanner;
+class GradeTracker{
+public static void main(String[]args)
+{
+Scanner sc = new Scanner(System.in);
+
+System.out.println("Enter Adbms marks :" );
+ double number =sc.nextDouble();
+System.out.println(  "Marks entered : " + number);
+
+System.out.println("Enter Java  marks :" );
+ double num =sc.nextDouble();
+System.out.println(  "Marks entered : " + num);
+
+System.out.println("Enter Coa marks :" );
+ double num1 =sc.nextDouble();
+System.out.println(  "Marks entered : " + num1);
+
+double sum = number+num+ num1 ;
+System.out.println(num1+"+" + num + number + "=" + sum );
+
+double per =(sum/300) * 100 ;
+System.out.println("The percentage is :" +per);
+
+if(per>=75)
+{
+System.out.println(" Grade : A");
+}
+else if(per>=60)
+{
+System.out.println(" Grade :B");
+
+}
+else if(per=35)
+{System.out.println(" Grade :C");
+}
+else 
+{
+System.out.println(" Grade :F ");
+}
+	}
+}
+
+
+
+
+
+
